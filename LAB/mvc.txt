@@ -1,0 +1,51 @@
+cd bookstor
+e MVC
+python manage.py startapp books
+from django.db import models
+class Book(models.Model):
+title
+= models.CharField(max_length=100)
+author
+= models.CharField(max_length=50)
+published_date
+= models.DateField()
+def __str__(self): return self.title
+from django.shortcuts import
+render
+from .models import Book
+def book_list(request):
+books
+= Book.objects.all()
+return
+render(request, 'books/book_list.html', {'books': books})
+<!-- books/templates/books/book_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Book List</title>
+</head>
+<body>
+<h1>Book List</h1>
+<ul>
+{% for book in books %}
+<li>{{ book.title }} by {{ book.author }} (Published: {{ book.published_date }})</li>
+{% endfor %}
+</ul></body>
+</html>
+from django.urls import path
+from
+. import views
+urlpatterns
+=
+[
+path('list/', views.book_list, name='book_list'),
+]
+Update bookstore/urls.py to include the URLs from the books app: # bookstore/urls.py
+from django.contrib import admin
+from django.urls import path, include
+urlpatterns
+=
+[
+path('admin/', admin.site.urls),
+path('books/', include('books.urls')),

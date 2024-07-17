@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Class Timetable</title>
+</head>
+<style>
+table,
+th,
+td {
+border: 1px solid black;
+border-collapse: collapse;
+}
+th,td{ padding:15px;}
+</style>
+<table style="width=100%">
+<body>
+<table border="1" width="100%">
+<tr>
+<th>Time</th>
+<th>DO 1</th>
+<th>DO 2</th>
+</tr>
+<tr>
+<td>8:00 - 9:00</td>
+<td rowspan="2">Web Programming</td>
+<td style="background-color:orange;">Web Programming</td>
+<td>Data Mining</td>
+</tr>
+<tr>
+<td>9:00 - 10:00</td>
+<td>Disaster Management</td>
+<td style="background-color:lightblue;">Disaster Management</td>
+</tr>
+<tr>
+<td>10:00 - 11:00</td>
+<td>Business Intelligence</td>
+<td>Web Programming</td>
+<td style="background-color:orange;">Web Programming</td>
+</tr>
+<tr>
+<td>11:00 - 12:00</td>
+<td colspan="2">
+<table border="1" width="100%">
+<tr>
+<th>Time</th>
+<th>Activity</th>
+</tr>
+<tr>
+<td>11:00 - 11:30</td>
+<td>Break</td>
+</tr>
+<tr>
+<td>11:30 - 12:00</td>
+<td>Library</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td>12:00 - 1:00</td>
+<td>Disaster Management</td>
+<td style="background-color:lightblue;">Disaster Management</td>
+<td rowspan="2">Business Intelligence</td>
+</tr>
+<tr>
+<td>1:00 - 2:00</td>
+<td>Web Programming</td>
+<td style="background-color:orange;">Web Programming</td>
+</tr>
+<tr>
+<td>2:00 - 3:00</td>
+<td>Data Mining</td>
+<td>Disaster Management</td>
+<td style="background-color:lightblue;">Disaster Management</td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+    <style>.error { color: red; }</style>
+</head>
+<body>
+    <h2>Registration Form</h2>
+    <form id="registrationForm" onsubmit="return validateForm()">
+        <label>First Name: <input type="text" id="firstName"></label> <span id="firstNameError" class="error"></span><br><br>
+        <label>Last Name: <input type="text" id="lastName"></label> <span id="lastNameError" class="error"></span><br><br>
+        <label>Email: <input type="text" id="email"></label> <span id="emailError" class="error"></span><br><br>
+        <label>User ID: <input type="text" id="userId"></label> <span id="userIdError" class="error"></span><br><br>
+        <label>Password: <input type="password" id="password"></label> <span id="passwordError" class="error"></span><br><br>
+        <label>Confirm Password: <input type="password" id="confirmPassword"></label> <span id="confirmPasswordError" class="error"></span><br><br>
+        <input type="submit" value="Register">
+    </form>
+    <script>
+        function validateForm() {
+            let isValid = true;
+            let fields = ["firstName", "lastName", "email", "userId", "password", "confirmPassword"];
+            let emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+            fields.forEach(field => {
+                let error = document.getElementById(field + "Error");
+                let value = document.getElementById(field).value;
+                error.textContent = value ? "" : `${field.replace(/([A-Z])/g, ' $1')} is required`;
+                isValid &= !!value;
+            });
+            let email = document.getElementById("email").value;
+            if (email && !emailPattern.test(email)) {
+                document.getElementById("emailError").textContent = "Invalid email format";
+                isValid = false;
+            }
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+            if (password && password !== confirmPassword) {
+                document.getElementById("confirmPasswordError").textContent = "Passwords do not match";
+                isValid = false;
+            }
+            return isValid;
+        }
+    </script>
+</body>
+</html>
